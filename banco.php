@@ -2,11 +2,8 @@
 
 require "Conta.php";
 
-$contaHenrique = new Conta();
-$contaFulano = new Conta();
-
-$contaHenrique->setNome("Henrique");
-$contaFulano->setNome("Fulano");
+$contaHenrique = new Conta(nome: "Henrique", cpf: "123.456.789-10");
+$contaFulano = new Conta(nome: "Fulano", cpf: "123.456.789-11");
 
 $contaHenrique->depositar(567);
 

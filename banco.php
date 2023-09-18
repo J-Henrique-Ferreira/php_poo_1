@@ -1,12 +1,17 @@
 <?php
 
-require "Conta.php";
+require_once 'autoload.php';
 
-$contaHenrique = new Conta(nome: "Henrique", cpf: "123.456.789-10");
-$contaFulano = new Conta(nome: "Fulano", cpf: "123.456.789-11");
+use Alura\Banco\Modelo\Conta\{Conta, ContaPoupanca, ContaCorrente, Titular};
+use Alura\Banco\Modelo\{CPF, Endereco};
 
-$contaHenrique->depositar(567);
+$endereco = new Endereco('Petrópolis', 'um bairro', 'minha rua', '71B');
+$vinicius = new Titular(new CPF('123.456.789-10'), 'Vinicius Dias', $endereco);
+$primeiraConta = new ContaPoupanca($vinicius);
+$primeiraConta->depositar(500);
+$primeiraConta->sacar(100);
 
-$contaHenrique->transferir(200, $contaFulano);
-
-echo "saldo conta joao {$contaHenrique->getSaldo()}";
+echo $primeiraConta->recuperaNomeTitular() . PHP_EOL;
+echo $primeiraConta->recuperaCpfTitular() . PHP_EOL;
+echo $primeiraConta->recuperaSaldo() . PHP_EOL;
+echo Conta::recuperaNumeroDeContas();

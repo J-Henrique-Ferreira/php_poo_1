@@ -1,9 +1,11 @@
 <?php
 
 namespace Alura\Banco\Modelo\Funcionario;
+
+use Alura\Banco\Modelo\Autenticavel;
 use Alura\Banco\Modelo\Funcionario\Funcionario;
 
-class Desenvolvedor extends Funcionario
+class Desenvolvedor extends Funcionario implements Autenticavel
 {
     public function calculaBonificacao(): float 
     {
@@ -13,5 +15,9 @@ class Desenvolvedor extends Funcionario
     public function sobeNivel(): void
     {
         $this->alteraSalario($this->recuperaSalario() * 0.75);
+    }
+
+    public function podeAutenticar(string $senha): bool {
+        return $senha === "desenvolvedor";
     }
 }

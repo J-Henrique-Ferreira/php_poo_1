@@ -1,6 +1,5 @@
 <?php
 
-
 namespace Alura\Banco\Service;
 
 use Alura\Banco\Modelo\Funcionario\Funcionario;
